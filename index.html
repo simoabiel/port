@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foguem Simo Dominique Abiel - Portfolio</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    /* Colors */
+    :root {
+      --primary-gradient: linear-gradient(135deg, #008080, #00b3b3);
+      --primary-color: #007a7a;
+      --secondary-color: #50e3c2;
+      --accent-color: #f5a623;
+      --background-color: #f0f4f8;
+      --text-color: #333333;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    header {
+      background: var(--primary-gradient);
+      color: var(--white);
+      padding: 2rem 1rem 2.5rem 1rem;
+      text-align: center;
+      animation: slideDown 1s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0, 128, 128, 0.5);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing: 1.3px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle diagonal lines pattern */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.1) 10px,
+          transparent 10px,
+          transparent 20px
+        );
+      opacity: 0.15;
+      pointer-events: none;
+      transform: translate(-25%, -25%);
+      z-index: 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: 900;
+      font-size: 3rem;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    header p {
+      margin-top: 0.4rem;
+      font-size: 1.2rem;
+      font-style: italic;
+      opacity: 0.9;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: var(--secondary-color);
+      flex-wrap: wrap;
+      box-shadow: 0 2px 4px rgba(80, 227, 194, 0.3);
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 1rem 1.5rem;
+      transition: background-color 0.3s, color 0.3s;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      outline: none;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    h2 {
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--accent-color);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
+      animation: fadeIn 2s ease-in;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(0, 122, 122, 0.5);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      background-color: var(--white);
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .gallery-item p {
+      margin-top: 0.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    /* Responsive nav for small screens */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        padding: 0.75rem 1rem;
+        border-top: 1px solid rgba(245, 166, 35, 0.5);
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a:first-child {
+        border-top: none;
+      }
+    }
+
+    /* Services section styled as cards */
+    #services ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    #services li {
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 6px 15px rgba(0, 122, 122, 0.15);
+      font-weight: 600;
+      color: var(--primary-color);
+      position: relative;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: default;
+      padding-left: 2.5rem;
+    }
+
+    #services li::before {
+      content: "✓";
+      color: var(--accent-color);
+      font-weight: bold;
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+    }
+
+    /* Add icon styles */
+    #services li .icon {
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    #services li:hover {
+      box-shadow: 0 10px 25px rgba(80, 227, 194, 0.3);
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Foguem Simo Dominique Abiel</h1>
+    <p>Software Engineer in Training | Web & Mobile Developer | Tech Problem Solver</p>
+  </header>
+
+  <nav aria-label="Primary navigation">
+    <a href="#about">About Me</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+    <section id="about" tabindex="0">
+      <h2>About Me</h2>
+      <p3>
+        I am Foguem Simo Dominique Abiel, currently concluding my practice activity as a software engineering student.
+        I have experience in developing web and mobile applications, and I am passionate about building digital solutions.
+        I am open to online opportunities and collaborations that will help me grow professionally.
+      </p3>
+    </section>
+
+    <section id="services" tabindex="0">
+      <h2>Services</h2>
+      <ul>
+        <li><span class="icon">🌐</span> Website Development (HTML, CSS, JavaScript, PHP)</li>
+        <li><span class="icon">📱</span> Mobile App Development (Android, Flutter)</li>
+        <li><span class="icon">🛠️</span> Software Engineering & System Design</li>
+        <li><span class="icon">🗄️</span> Database Management (MySQL, PostgreSQL)</li>
+        <li><span class="icon">🐞</span> Debugging & Maintenance</li>
+        <li><span class="icon">📄</span> Technical Documentation & API Integration</li>
+      </ul>
+    </section>
+
+    <section id="projects" tabindex="0">
+      <h2>Projects</h2>
+      <p>Here are some highlights of my recent work — creative, functional, and user-friendly applications that solve real problems.</p>
+      <p>Coming soon! Showcasing my best work in web and mobile development.</p>
+    </section>
+
+    <section id="gallery" tabindex="0">
+      <h2>Gallery</h2>
+      <div class="gallery" aria-label="Project gallery">
+        <div class="gallery-item">
+          <img src="project1.jpg" alt="Responsive Website Design for E-Commerce" />
+          <p>Responsive Website Design for E-Commerce</p>
+        </div>
+        <div class="gallery-item">
+          <img src="project2.jpg" alt="Mobile App UI for Online Learning Platform" />
+          <p>Mobile App UI for Online Learning Platform</p>
+        </div>
+        <div class="gallery-item">
+          <img src="project3.jpg" alt="Dashboard System for Inventory Management" />
+          <p>Dashboard System for Inventory Management</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" tabindex="0">
+      <h2>Contact</h2>
+      <p>
+        Interested in working together or want to say hello? You can reach me via my
+        <a href="contact.html" aria-label="Contact page">contact</a>.
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Foguem Simo Dominique Abiel. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
